@@ -37,6 +37,8 @@ public class InputManager : MonoBehaviour
         commands.Add("get");
         commands.Add("restart"); // added to work with delegate example
         commands.Add("save");
+        commands.Add("commands");
+        commands.Add("inventory");
 
         userInput.onEndEdit.AddListener(GetInput); //now calls GetInput
         //abutton.onClick.AddListener(DoSomething);
@@ -101,6 +103,14 @@ public class InputManager : MonoBehaviour
                 else if (parts[0] == "save")
                 {
                     GameManager.instance.Save();
+                }
+                else if (parts[0] == "commands")
+                {
+                    UpdateStory("Your available commands are: 'go', 'get', 'restart', 'save', 'commands', and 'inventory'.");
+                }
+                else if (parts[0] == "inventory")
+                {
+                    UpdateStory("Your inventory consists of: ");
                 }
             }
         }
