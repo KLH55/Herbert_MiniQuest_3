@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ToggleController : MonoBehaviour
+public class DarkModeController : MonoBehaviour
 {
     public Image background;
     public Text displayText;
-    public Text toggleText;
+    public Text darkModeToggleText;
     public Text inputPlaceholder;
     public Text inputText;
+    public Text fontToggleText;
 
     private bool darkMode;
     // Start is called before the first frame update
@@ -47,17 +48,19 @@ public class ToggleController : MonoBehaviour
         {
             background.color = Color.black;
             displayText.color = Color.white;
-            toggleText.color = Color.white;
+            darkModeToggleText.color = Color.white;
             inputPlaceholder.color = Color.white;
             inputText.color = Color.white;
+            fontToggleText.color = Color.white;
         }
         else
         {
             background.color = Color.white;
             displayText.color = Color.black;
-            toggleText.color = Color.black;
+            darkModeToggleText.color = Color.black;
             inputPlaceholder.color = Color.black;
             inputText.color = Color.black;
+            fontToggleText.color = Color.black;
         }
     }
 }

@@ -40,10 +40,13 @@ public class GameManager : MonoBehaviour
             {
                 NavigationManager.instance.SwitchRooms(room);
             }
+
+            inventory = new List<string>(playerData.currentInventory);
         }
         else
         {
             NavigationManager.instance.ResetGame();
+            ResetGame();
         }
     }
 
@@ -57,6 +60,7 @@ public class GameManager : MonoBehaviour
         // set up data to save
         SaveState playerState = new SaveState();
         playerState.currentRoom = NavigationManager.instance.currentRoom.name;
+        playerState.currentInventory = inventory;
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream afile = File.Create(Application.persistentDataPath + "/player.save");

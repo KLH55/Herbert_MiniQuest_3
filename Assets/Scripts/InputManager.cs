@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 using UnityEngine.Windows;
 
@@ -39,6 +41,7 @@ public class InputManager : MonoBehaviour
         commands.Add("save");
         commands.Add("commands");
         commands.Add("inventory");
+        commands.Add("exit");
 
         userInput.onEndEdit.AddListener(GetInput); //now calls GetInput
         //abutton.onClick.AddListener(DoSomething);
@@ -106,11 +109,23 @@ public class InputManager : MonoBehaviour
                 }
                 else if (parts[0] == "commands")
                 {
-                    UpdateStory("Your available commands are: 'go', 'get', 'restart', 'save', 'commands', and 'inventory'.");
+                    UpdateStory("Your available commands are: ");
+                    foreach (string command in commands)
+                    {
+                        UpdateStory(command);
+                    }
                 }
                 else if (parts[0] == "inventory")
                 {
                     UpdateStory("Your inventory consists of: ");
+                    foreach (string item in GameManager.instance.inventory)
+                    {
+                        UpdateStory(item);
+                    }
+                }
+                else if (parts[0] == "exit")
+                {
+                    EditorApplication.isPlaying = false;
                 }
             }
         }
